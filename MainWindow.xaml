@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaschenRechner"
-        mc:Ignorable="d"
-        Title="TaschenRecnher" Height="450" Width="300"
+        mc:Ignorable="d" 
+        Title="TaschenRecnher" 
         WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize" WindowStyle="None" MouseLeftButtonDown="DragMe">
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None"
+        MouseLeftButtonDown="DragMe" ResizeMode="CanResizeWithGrip" Width="394.143"
+        Height="519.848" MinWidth="280" MinHeight="350">
     <Border CornerRadius="5" BorderBrush="Gray"
             BorderThickness="0.3" Grid.RowSpan="2">
         <Border.Background>
@@ -18,148 +20,90 @@
         </Border.Background>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
+
+            <TextBlock Margin="7,4,4,4" FontWeight= "Medium"> Calculator </TextBlock>
 
             <Ellipse Fill="Red" Grid.Row="0" Grid.Column="4" Height="15" Width="15"
                      HorizontalAlignment="Right" VerticalAlignment="Top" 
                      Margin="0,10,10,0" MouseLeftButtonDown="closeApp"
-                     ToolTip="Close" Cursor="Hand" Tag=""/>
+                     ToolTip="Close" Cursor="Hand"/>
             <Ellipse Fill="Yellow" Grid.Row="0" Grid.Column="4" Height="15" Width="15"
                      HorizontalAlignment="Right" VerticalAlignment="Top"
                      Margin="0,10,30,0" MouseLeftButtonDown="minimizeApp"
                      ToolTip="Minimize" Cursor="Hand">
             </Ellipse>
 
-
-
-            <TextBox x:Name="textDisplay" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" IsReadOnly="True"
+            <TextBox x:Name="log" Width="auto" Height="auto" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" IsReadOnly="True"
                      TextAlignment="Right" VerticalAlignment="Bottom" FontSize="30"
-                     BorderThickness="0" Background="Transparent"> 0
+                     BorderThickness="0" Background="Transparent">
             </TextBox>
 
 
-<!--Math Buttons-->
-            <Button x:Name="btnProcent" Grid.Row="3" Grid.Column="0" Content="%" Background="Transparent" />
-            <Button x:Name="btnClearAll" Grid.Row="3" Grid.Column="1" Content="CE" Background="Transparent" Click="btnClearAll_Click"/>
-            <Button x:Name="btnClearLast" Grid.Row="3" Grid.Column="2" Content="&lt;-" Background="Transparent" Click="btnClearLast_Click"/>
-            <Button x:Name="btnPower" Grid.Row="3" Grid.Column="3" Content="x^2" Background="Transparent"/>
+
+            <TextBox x:Name="textDisplay" Width="auto" Height="auto" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" IsReadOnly="True"
+                     TextAlignment="Right" VerticalAlignment="Bottom" FontSize="30"
+                     BorderThickness="0" Background="Transparent">
+            </TextBox>
+            
+            <!--conver Button-->
+            <Button x:Name="binary" Content="ToBinary" Grid.Row="3" Grid.Column="0"
+                    Background="Transparent" FontSize="11" FontStyle="Italic" Click="binary_Click" ></Button>
+            <Button x:Name="Decimal" Content="ToDecimal" Grid.Row="3" Grid.Column="1"
+                    Background="Transparent" FontSize="11" FontStyle="Italic" Click="Decimal_Click" ></Button>
+            <Button x:Name="hex" Content="ToHex" Grid.Row="3" Grid.Column="2"
+                    Background="Transparent" FontSize="11" FontStyle="Italic" Click="hex_Click" ></Button>
+
+
+            <!--Math Buttons-->
+            <Button x:Name="btnProcent" Grid.Row="5" Grid.Column="0" Content="%" Background="Transparent" Click="btn_Click" />
+            <Button x:Name="btnClearAll" Grid.Row="5" Grid.Column="1" Content="CE" Background="Transparent" Click="btnClearAll_Click"/>
+            <Button x:Name="btnClearLast" Grid.Row="5" Grid.Column="2" Content="&lt;-" Background="Transparent" Click="btnClearLast_Click"/>
+            <TextBlock Grid.Row="5" Grid.Column="3" Background="Transparent" FontSize="20"
+                       TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"> Standard</TextBlock>
 
             <!--7,8,9-->
-            <Button x:Name="btn7" Grid.Row="4" Grid.Column="0" Content="7" Background="Transparent" Click="btn7_Click"/>
-            <Button x:Name="btn8" Grid.Row="4" Grid.Column="1" Content="8" Background="Transparent" Click="btn8_Click" />
-            <Button x:Name="btn9" Grid.Row="4" Grid.Column="2" Content="9" Background="Transparent" Click="btn9_Click"/>
-            <Button x:Name="btnDivide" Grid.Row="4" Grid.Column="3" Content="/" Background="Transparent" Click="btnDivide_Click"/>
+            <Button x:Name="btn7" Grid.Row="6" Grid.Column="0" Content="7" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btn8" Grid.Row="6" Grid.Column="1" Content="8" Background="Transparent" Click="btn_Click" />
+            <Button x:Name="btn9" Grid.Row="6" Grid.Column="2" Content="9" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btnDivide" Grid.Row="6" Grid.Column="3" Content="/" Background="Transparent" Click="btn_Click"/>
 
             <!--4,5,6-->
-            <Button x:Name="btn4" Grid.Row="5" Grid.Column="0" Content="4" Background="Transparent" Click="btn4_Click"/>
-            <Button x:Name="btn5" Grid.Row="5" Grid.Column="1" Content="5" Background="Transparent" Click="btn5_Click"/>
-            <Button x:Name="btn6" Grid.Row="5" Grid.Column="2" Content="6" Background="Transparent" Click="btn6_Click"/>
-            <Button x:Name="btnMal" Grid.Row="5" Grid.Column="3" Content="*" Background="Transparent" Click="btnMal_Click"/>
+            <Button x:Name="btn4" Grid.Row="7" Grid.Column="0" Content="4" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btn5" Grid.Row="7" Grid.Column="1" Content="5" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btn6" Grid.Row="7" Grid.Column="2" Content="6" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btnMal" Grid.Row="7" Grid.Column="3" Content="*" Background="Transparent" Click="btn_Click"/>
 
             <!--1,2,3-->
-            <Button x:Name="btn1" Grid.Row="6" Grid.Column="0" Content="1" Background="Transparent" Click="btn1_Click"/>
-            <Button x:Name="btn2" Grid.Row="6" Grid.Column="1" Content="2" Background="Transparent" Click="btn2_Click"/>
-            <Button x:Name="btn3" Grid.Row="6" Grid.Column="2" Content="3" Background="Transparent" Click="btn3_Click"/>
-            <Button x:Name="btnPlus" Grid.Row="6" Grid.Column="3" Content="+" Background="Transparent" Click="btnPlus_Click"/>
+            <Button x:Name="btn1"  Grid.Row="8" Grid.Column="0" Content="1" Background="Transparent" Click="btn_Click"
+                    />
+            <Button x:Name="btn2" Grid.Row="8" Grid.Column="1" Content="2" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btn3" Grid.Row="8" Grid.Column="2" Content="3" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btnPlus" Grid.Row="8" Grid.Column="3" Content="+" Background="Transparent" Click="btn_Click"/>
 
-            <!--1,2,3-->
-            <Button x:Name="btnMinus" Grid.Row="7" Grid.Column="3" Content="-" Background="Transparent" Click="btnMinus_Click"/>
-            <Button x:Name="btn0" Grid.Row="7" Grid.Column="1" Content="0" Background="Transparent"/>
-            <Button x:Name="btnEqual" Grid.Row="7" Grid.Column="2" Content="=" Background="Transparent" Click="btnEqual_Click"/>
-            <Button x:Name="btnkomma" Grid.Row="7" Grid.Column="0" Content="," Background="Transparent"/>
+
+            <Button x:Name="btnMinus" Grid.Row="9" Grid.Column="3" Content="-" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btn0" Grid.Row="9" Grid.Column="1" Content="0" Background="Transparent" Click="btn_Click"/>
+            <Button x:Name="btnEqual" Grid.Row="9" Grid.Column="2" Content="=" Background="Transparent" Click="btnEqual_Click"/>
+            <Button x:Name="btnpoint" Grid.Row="9" Grid.Column="0" Content="." Background="Transparent" Click="btn_Click"/>
 
         </Grid>
     </Border>
-
-    <!--<StackPanel>
-            <Grid Margin="0,10,10,0" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"></RowDefinition>
-
-                </Grid.RowDefinitions>
-                <Ellipse Fill="Red" Grid.Row="0" Height="15" Width="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" MouseLeftButtonDown="closeApp" ToolTip="Close" Cursor="Hand"></Ellipse>
-                <Ellipse Fill="Yellow" Grid.Row="0" Height="15" Width="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,30,0" MouseLeftButtonDown="minimizeApp" ToolTip="Minimize" Cursor="Hand"></Ellipse>
-            </Grid>
-            <StackPanel>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20"></RowDefinition>
-                    </Grid.RowDefinitions>
-                </Grid>
-                <TextBox x:Name="Result" IsReadOnly="True" VerticalAlignment="Bottom"
-                     Margin="10" Height="40" Width="478"
-                     Background="Transparent" FontSize="30" 
-                     TextAlignment="Right">
-                </TextBox>
-            </StackPanel>
-
-
-
-
-            </StackPanel>
-            -->
-    <!--4,5,6-->
-    <!--
-            <StackPanel Orientation="Horizontal" Width="478" >
-
-                <Button Content="*" Margin="20,10,30,10" Height="50" Width="50"
-                        HorizontalAlignment="Left" FontSize="20"/>
-                <Button Content="5" Margin="50,10,60,10" Height="50" Width="50"
-                        HorizontalAlignment="Center" FontSize="20" />
-                <Button Content="6" Margin="20,10,70,10" Height="50" Width="50"
-                         FontSize="20"/>
-                <Button Content="*" Margin="10,10,10,10" Height="50" Width="50"
-                         FontSize="20" HorizontalAlignment="Left"/>
-            </StackPanel>
-            -->
-    <!--1,2,3-->
-    <!--
-            <StackPanel Orientation="Horizontal" Width="478" >
-
-                <Button Content="1" Margin="20,10,30,10" Height="50" Width="50"
-                        HorizontalAlignment="Left" FontSize="20"/>
-                <Button Content="2" Margin="50,10,60,10" Height="50" Width="50"
-                        HorizontalAlignment="Center" FontSize="20" />
-                <Button Content="3" Margin="20,10,70,10" Height="50" Width="50"
-                         FontSize="20"/>
-                <Button Content="-" Margin="10,10,10,10" Height="50" Width="50"
-                         FontSize="20" HorizontalAlignment="Left"/>
-            </StackPanel>
-            -->
-    <!--0+-->
-    <!--
-            <StackPanel Orientation="Horizontal" Width="478" >
-
-                <Button Content="+" Margin="20,10,30,10" Height="50" Width="50"
-                        HorizontalAlignment="Left" FontSize="20"/>
-                <Button Content="0" Margin="50,10,60,10" Height="50" Width="50"
-                        HorizontalAlignment="Center" FontSize="20" />
-                <Button Content="," Margin="20,10,70,10" Height="50" Width="50"
-                         FontSize="20"/>
-                <Button Content="=" Margin="10,10,10,10" Height="50" Width="50"
-                         FontSize="20" HorizontalAlignment="Left"/>
-            </StackPanel>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                </Grid.RowDefinitions>
-
-            </Grid>
-        </StackPanel>-->
 
 </Window>

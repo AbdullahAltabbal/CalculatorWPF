@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Linq;
@@ -21,16 +22,10 @@ namespace TaschenRechner
     /// </summary>
     public partial class MainWindow : Window
     {
-        long firstNumber = 0;
-        long secoNumber = 0;
-        string operation = "";
-
-
         public MainWindow()
         {
             InitializeComponent();
         }
-
         private void closeApp(object sender, MouseButtonEventArgs e)
         {
             try
@@ -43,7 +38,6 @@ namespace TaschenRechner
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void minimizeApp(object sender, MouseButtonEventArgs e)
         {
             try
@@ -56,7 +50,6 @@ namespace TaschenRechner
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void DragMe(object sender, MouseButtonEventArgs e)
         {
             try
@@ -69,232 +62,136 @@ namespace TaschenRechner
 
             }
         }
-
-        private void btn1_Click(object sender, RoutedEventArgs e)
+        private void btn_Click(object sender, RoutedEventArgs e)
         {
-            if (operation =="")
-            {
-            firstNumber = (firstNumber*10)+ 1;
-            textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 1;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-        }
-
-        private void btn2_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10) + 2;
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 2;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-        }
-
-        private void btn3_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10) + 3;
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 3;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
+            Button b = (Button)sender;
+            textDisplay.Text += b.Content.ToString();
+            log.Text += b.Content.ToString();
 
         }
-
-        private void btn4_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10) + 4;
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 4;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-
-        }
-
-        private void btn5_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10) + 5;
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 5;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-
-        }
-
-        private void btn6_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10) + 6;
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 6;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-
-        }
-
-        private void btn7_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10) + 7;
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 7;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-
-        }
-
-        private void btn8_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10) + 8;
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 8;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-
-        }
-
-        private void btn9_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10) + 9;
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10) + 9;
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-        }
-        private void btn0_Click(object sender, RoutedEventArgs e)
-        {
-            if (operation == "")
-            {
-                firstNumber = (firstNumber * 10);
-                textDisplay.Text = firstNumber.ToString();
-            }
-            else
-            {
-                secoNumber = (secoNumber * 10);
-                textDisplay.Text = secoNumber.ToString();
-
-            }
-        }
-
-        private void btnPlus_Click(object sender, RoutedEventArgs e)
-        {
-            operation = "+";
-            textDisplay.Text = "0";
-        }
-
-        private void btnMal_Click(object sender, RoutedEventArgs e)
-        {
-            operation = "*";
-            textDisplay.Text = "0";
-
-        }
-
-        private void btnDivide_Click(object sender, RoutedEventArgs e)
-        {
-            operation = "/";
-            textDisplay.Text = "0";
-
-        }
-
-        private void btnMinus_Click(object sender, RoutedEventArgs e)
-        {
-            operation = "-";
-            textDisplay.Text = "0";
-
-        }
-
-        private void btnEqual_Click(object sender, RoutedEventArgs e)
-        {
-            switch (operation)
-            {
-                case "+":
-                    textDisplay.Text = (firstNumber + secoNumber).ToString();
-                    break;
-                case "-":
-                    textDisplay.Text = (firstNumber - secoNumber).ToString();
-                    break;
-                case "*":
-                    textDisplay.Text = (firstNumber * secoNumber).ToString();
-                    break;
-                case "/":
-                    textDisplay.Text = (firstNumber / secoNumber).ToString();
-                    break;
-            }
-        }
-
         private void btnClearAll_Click(object sender, RoutedEventArgs e)
         {
-            firstNumber = 0;
-            secoNumber = 0;
-            operation = "";
-            textDisplay.Text = "0";
+            textDisplay.Clear();
+            log.Clear();
         }
-
         private void btnClearLast_Click(object sender, RoutedEventArgs e)
         {
-
-            if (operation == "")
+            if (textDisplay.Text.Length > 0)
             {
-                firstNumber = (firstNumber / 10);
-                textDisplay.Text = firstNumber.ToString();
+                textDisplay.Text = textDisplay.Text.Substring(0, textDisplay.Text.Length - 1);
+                log.Text = log.Text.Substring(0, log.Text.Length - 1);
+            }
+        }
+        // TaschenRechner Buttons
+        private void btnEqual_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                result();
+            }
+            catch (Exception exc)
+            {
+                textDisplay.Text = "Error!";
+            }
+        }
+        // Operations
+        public void result()
+        {
+            long sum = 0;
+
+            String op;
+            int iOp = 0;
+            if (textDisplay.Text.Contains("+"))
+            {
+                iOp = textDisplay.Text.IndexOf("+");
+            }
+            else if (textDisplay.Text.Contains("-"))
+            {
+                iOp = textDisplay.Text.IndexOf("-");
+            }
+            else if (textDisplay.Text.Contains("*"))
+            {
+                iOp = textDisplay.Text.IndexOf("*");
+            }
+            else if (textDisplay.Text.Contains("/"))
+            {
+                iOp = textDisplay.Text.IndexOf("/");
+            }
+            else if (textDisplay.Text.Contains("%"))
+            {
+                iOp = textDisplay.Text.IndexOf("%");
+            }
+
+            op = textDisplay.Text.Substring(iOp, 1);
+            long op1 = long.Parse(textDisplay.Text.Substring(0,iOp));
+            long op2 = long.Parse(textDisplay.Text.Substring(iOp + 1, textDisplay.Text.Length - iOp - 1));
+
+
+            if (op == "+")
+            {
+                sum = op1 + op2;
+                textDisplay.Text = sum.ToString();
+            }
+            else if (op == "-")
+            {
+                sum = op1 - op2;
+                textDisplay.Text = sum.ToString();
+                log.Text += textDisplay.Text;
+            }
+            else if (op == "*")
+            {
+                sum = op1 * op2;
+                textDisplay.Text = sum.ToString();
+            }
+            else if (op == "%")
+            {
+                sum = op1 % op2;
+                textDisplay.Text = sum.ToString();
             }
             else
             {
-                secoNumber = (secoNumber / 10);
-                textDisplay.Text = secoNumber.ToString();
+                sum = op1 / op2;
+                textDisplay.Text = sum.ToString();
+            }
+        }
+        // Tobinary
+        private void binary_Click(object sender, RoutedEventArgs e)
+        {
+            var input = Convert.ToInt32(textDisplay.Text);
+            string output = Convert.ToString(input, 2);
+            textDisplay.Text = output;
+        }
+        // Tohex
+        private void hex_Click(object sender, RoutedEventArgs e)
+        {
+            var input = Convert.ToInt32(textDisplay.Text);
 
+            if (input < 1) textDisplay.Text = "0";
+
+            int hex = input;
+            string hexStr = string.Empty;
+
+            while (input > 0)
+            {
+                hex = input % 16;
+
+                if (hex < 10)
+                    hexStr = hexStr.Insert(0, Convert.ToChar(hex + 48).ToString());
+                else
+                    hexStr = hexStr.Insert(0, Convert.ToChar(hex + 55).ToString());
+
+                input /= 16;
             }
 
+            textDisplay.Text = hexStr;
 
+        }
+        // ToDecimal
+        private void Decimal_Click(object sender, RoutedEventArgs e)
+        {
+            var input = Convert.ToInt32(textDisplay.Text, 2).ToString();
+
+            textDisplay.Text = input;
         }
     }
 }
