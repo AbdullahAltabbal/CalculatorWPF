@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Odbc;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,6 @@ using System.Windows.Shapes;
 
 namespace TaschenRechner
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -67,7 +65,6 @@ namespace TaschenRechner
             Button b = (Button)sender;
             textDisplay.Text += b.Content.ToString();
             log.Text += b.Content.ToString();
-
         }
         private void btnClearAll_Click(object sender, RoutedEventArgs e)
         {
@@ -97,7 +94,7 @@ namespace TaschenRechner
         // Operations
         public void result()
         {
-            long sum = 0;
+            double sum = 0;
 
             String op;
             int iOp = 0;
@@ -117,14 +114,16 @@ namespace TaschenRechner
             {
                 iOp = textDisplay.Text.IndexOf("/");
             }
-            else if (textDisplay.Text.Contains("%"))
+            else if (textDisplay.Text.Contains("^"))
             {
-                iOp = textDisplay.Text.IndexOf("%");
+                iOp = textDisplay.Text.IndexOf("^");
             }
 
+
+            CultureInfo culture = new CultureInfo("de"); // I'm assuming german here.
             op = textDisplay.Text.Substring(iOp, 1);
-            long op1 = long.Parse(textDisplay.Text.Substring(0,iOp));
-            long op2 = long.Parse(textDisplay.Text.Substring(iOp + 1, textDisplay.Text.Length - iOp - 1));
+            double op1 = double.Parse(textDisplay.Text.Substring(0,iOp),culture);
+            double op2 = double.Parse(textDisplay.Text.Substring(iOp + 1, textDisplay.Text.Length - iOp - 1),culture);
 
 
             if (op == "+")
@@ -143,10 +142,14 @@ namespace TaschenRechner
                 sum = op1 * op2;
                 textDisplay.Text = sum.ToString();
             }
-            else if (op == "%")
+            else if (op == "^")
             {
-                sum = op1 % op2;
-                textDisplay.Text = sum.ToString();
+                double temp = 1;
+                for (int i = 1; i <= op2; i++)
+                {
+                    temp = temp * op1;
+                }               
+                textDisplay.Text = temp.ToString();
             }
             else
             {
